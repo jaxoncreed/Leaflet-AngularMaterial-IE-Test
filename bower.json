@@ -1,0 +1,22 @@
+{
+  "name": "IETest",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Jackson Morgan <jaxoncreed@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.1",
+    "angular-material": "^1.0.6"
+  }
+}

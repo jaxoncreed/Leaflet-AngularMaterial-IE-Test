@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="demoapp" style="height: 100%">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+
+    <script>
+        var app = angular.module("demoapp", ["ngMaterial"]);
+        app.controller('controller', function() {
+            map = L.map('map').setView([51.505, -0.09], 8)
+
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+              attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+              maxZoom: 8,
+              id: 'jaxoncreed.panbcil8',
+              accessToken: 'pk.eyJ1IjoiamF4b25jcmVlZCIsImEiOiJjaWxlNm5ic28wZXAwdm5tY2MxN3JsbjQ2In0.xrC1yY4IaIjm1DD8BiT4VA'
+            }).addTo(map);
+            // Just included my access token to mapbox for your convenience
+
+            L.Icon.Default.imagePath = 'http://cdn.leafletjs.com/leaflet/v0.7.7/images';
+
+            for (var i = 1; i <= 250; i++) {
+              config = [
+                Math.random() * (52 - 50) + 50,
+                Math.random() * (1 - -1) + -1
+              ]
+              marker = L.marker(config).addTo(map);
+            }
+        });
+    </script>
+  </head>
+  <body ng-controller="controller" style="height: 100%">
+    <div id="map" style="width: 100%; height: 100%; background-color: red"></div>
+  </body>
+</html>
